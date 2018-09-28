@@ -44,9 +44,9 @@ wire [2:0] e;
 wire [2:0] p;
 assign s = e;  // sd = estado atual
 assign p[0] =  e[1]&e[2]; //1 operacão
-assign p[1] =  ~e[2] | (~e[0]~a) | (~e[1] | ~e[0]); //7 operacoes
-assign p[2] =  a | e[0] | e[1] | ~e[2]; //5 operacoes
-//13 operacoes
+assign p[1] =  ~e[2] | (~e[0]&~a) | (~e[1] | ~e[0]); //9 operacoes
+assign p[2] =  a | e[0] | e[1] | ~e[2]; //4 operacoes
+//14 operacoes
 ff  e0(p[0],clk,res,e[0]);
 ff  e1(p[1],clk,res,e[1]);
 ff  e2(p[2],clk,res,e[2]);
